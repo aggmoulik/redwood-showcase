@@ -6,7 +6,7 @@ type DefaultLayoutProps = {
 
 const DefaultLayout = ({ children }: DefaultLayoutProps) => {
   return (
-    <main className="p-4 md:p-8 w-full h-full min-h-full max-w-screen-xxl flex flex-col bg-primary text-text overflow-x-hidden">
+    <main className="p-4 md:p-8 w-full max-w-screen-xxl flex flex-col bg-primary text-text overflow-x-hidden h-screen">
       <Header />
       {children}
     </main>
