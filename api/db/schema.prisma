@@ -16,11 +16,12 @@ model Project {
   github_url  String?
   description String
   images      Image[]
-  twitter     String?
-  github      String?
   tags        String[]
-  slug        String   @default("slug-test")
+  slug        String
+  userID      User     @relation(fields: [userUserId], references: [userId])
   createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userUserId  Int
 }
 
 model Image {
@@ -28,4 +29,32 @@ model Image {
   url       String
   Project   Project? @relation(fields: [projectId], references: [id])
   projectId Int?
+  status    Boolean
+}
+
+model User {
+  userId      Int       @id @default(autoincrement())
+  emailID     String
+  username    String
+  profileUrl  String
+  lastLoginAt DateTime
+  role        Roles
+  social      Socials   @relation(fields: [socialId], references: [socialId])
+  socialId    Int
+  Project     Project[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Socials {
+  socialId Int     @id @default(autoincrement())
+  twitter  String?
+  github   String?
+  linkedin String?
+  User     User[]
+}
+
+enum Roles {
+  Admin
+  User
 }
