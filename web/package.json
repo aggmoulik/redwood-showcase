@@ -13,10 +13,10 @@
     ]
   },
   "dependencies": {
-    "@redwoodjs/auth": "0.39.4",
-    "@redwoodjs/forms": "^0.39.4",
-    "@redwoodjs/router": "^0.39.4",
-    "@redwoodjs/web": "^0.39.4",
+    "@redwoodjs/auth": "^0.41.0",
+    "@redwoodjs/forms": "^0.41.0",
+    "@redwoodjs/router": "^0.41.0",
+    "@redwoodjs/web": "^0.41.0",
     "@supabase/supabase-js": "^1.28.5",
     "@tailwindcss/line-clamp": "^0.2.2",
     "prop-types": "15.7.2",
