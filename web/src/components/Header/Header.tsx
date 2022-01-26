@@ -1,8 +1,11 @@
+import { useAuth } from '@redwoodjs/auth'
 import { routes } from '@redwoodjs/router'
 import LinkTo from 'src/components/LinkTo'
 import Text from 'src/components/Text'
+import Button from '../Button/Button'
 
 const Header = () => {
+  const { isAuthenticated, logOut } = useAuth()
   return (
     <div className="w-full flex items-center justify-between ">
       <a
@@ -19,7 +22,16 @@ const Header = () => {
 
       <Text name="Made with RedwoodJS" classes="text-2xl font-black" />
 
-      <LinkTo name={'Submit a Project'} linkTo={routes.newProject()} />
+      {!isAuthenticated ? (
+        <LinkTo name={'Submit a Project'} linkTo={routes.newProject()} />
+      ) : (
+        <Button
+          name={'Log Out'}
+          onClick={async () => {
+            await logOut()
+          }}
+        />
+      )}
     </div>
   )
 }

@@ -8,53 +8,48 @@ generator client {
   binaryTargets = "native"
 }
 
-model Project {
-  id          Int      @id @default(autoincrement())
-  email       String
-  title       String
-  website     String
+model project {
+  id          Int          @id @default(autoincrement())
+  title       String?
+  website     String?
   github_url  String?
-  description String
-  images      Image[]
+  description String?
+  images      image[]
   tags        String[]
-  slug        String
-  userID      User     @relation(fields: [userUserId], references: [userId])
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  userUserId  Int
+  slug        String?
+  created_at  DateTime     @default(now())
+  updated_at  DateTime     @updatedAt
+  user        user_profile @relation(fields: [user_id], references: [user_id])
+  user_id     String
 }
 
-model Image {
-  id        Int      @id @default(autoincrement())
-  url       String
-  Project   Project? @relation(fields: [projectId], references: [id])
-  projectId Int?
-  status    Boolean
+model image {
+  id         Int      @id @default(autoincrement())
+  url        String?
+  project    project? @relation(fields: [project_id], references: [id])
+  project_id Int?
+  status     Boolean?
 }
 
-model User {
-  userId      Int       @id @default(autoincrement())
-  emailID     String
-  username    String
-  profileUrl  String
-  lastLoginAt DateTime
-  role        Roles
-  social      Socials   @relation(fields: [socialId], references: [socialId])
-  socialId    Int
-  Project     Project[]
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+model user_profile {
+  user_id    String    @id @default(uuid())
+  full_name  String
+  email_id   String
+  username   String
+  avatar_url String
+  project    project[]
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
 }
 
-model Socials {
-  socialId Int     @id @default(autoincrement())
-  twitter  String?
-  github   String?
-  linkedin String?
-  User     User[]
+model socials {
+  social_id Int     @id @default(autoincrement())
+  twitter   String?
+  github    String?
+  linkedin  String?
 }
 
-enum Roles {
+enum roles {
   Admin
   User
 }

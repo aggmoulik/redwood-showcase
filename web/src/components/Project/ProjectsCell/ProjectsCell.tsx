@@ -14,8 +14,6 @@ export const QUERY = gql`
       website
       github_url
       description
-      twitter
-      github
       slug
       tags
       createdAt
