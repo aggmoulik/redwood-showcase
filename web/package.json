@@ -21,10 +21,15 @@
     "@tailwindcss/line-clamp": "^0.2.2",
     "prop-types": "15.7.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-icons": "^4.3.1"
   },
   "devDependencies": {
+    "@chakra-ui/react": "^1.8.1",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "autoprefixer": "^10.3.7",
+    "framer-motion": "^4",
     "postcss": "^8.3.11",
     "postcss-loader": "^6.2.0",
     "tailwindcss": "^3.0.1"

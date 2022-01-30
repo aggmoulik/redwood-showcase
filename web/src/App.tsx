@@ -1,3 +1,4 @@
+import { ChakraProvider, ColorModeScript } from '@chakra-ui/react'
 import { AuthProvider } from '@redwoodjs/auth'
 import { createClient } from '@supabase/supabase-js'
 import { FatalErrorBoundary, RedwoodProvider } from '@redwoodjs/web'
@@ -18,9 +19,12 @@ const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
       <AuthProvider client={supabaseClient} type="supabase">
-        <RedwoodApolloProvider>
-          <Routes />
-        </RedwoodApolloProvider>
+        <ColorModeScript />
+        <ChakraProvider>
+          <RedwoodApolloProvider>
+            <Routes />
+          </RedwoodApolloProvider>
+        </ChakraProvider>
       </AuthProvider>
     </RedwoodProvider>
   </FatalErrorBoundary>
